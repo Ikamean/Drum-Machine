@@ -3,12 +3,13 @@ import './App.scss';
 import drum from './drum.js';
 import Pad from './pad.js';
 import piano from './piano.js';
+import Button from 'react-bootstrap/Button';
 
 const drummer = drum;
 const pianist = piano;
 
 function App() {
-  const [display, setDisplay] = useState('');
+  const [display, setDisplay] = useState('#');
   const [volume, setVolume] = useState(1);
   const [audio, setAudio] = useState(drummer);
 
@@ -38,58 +39,61 @@ function App() {
   } 
   });
 
+  const [maxMin, setMax] = useState("Mute");
+
   const mute = () =>{
       power();
-      on? setVolume(0) : setVolume(1);
+      if(on){
+        setVolume(0);
+        setMax("Max");
+      }else{
+        setVolume(1);
+        setMax("Mute");
+      }
   }
-
-
-  
-  
-  
   return (
     <>
+      <div className="container-fluid">
         <div className="App row">
-          <div className="col-12">
+         <div className="col-12 header">
             <h2 id="header">Drum Machine</h2>
-            </div>
-          <div id="drum-machine">
+          </div> 
+          <div className=" changeSound col-12 row">
+                    <div className=" switch col-5 ">
+                      <Button type="button" className="switcher btn btn-dark  btn-lg btn-block" onClick={switchAudio}>{audio[0].name}</Button>
+                    </div>
 
-
-              <div className="pads ">
+                    <div className="chord col-7" >
+                      <Button type="button" id="display" className="btn btn-secondary btn-lg btn-block displayChord" disabled>{display}</Button>
+                    </div>
+                    <br/>
+                </div>
+          <div id="drum-machine" className="col-12 row">
+              <div className="pads col-12">
 
               {audio.map(sound=><Pad sound={sound}  setDisplay={setDisplay} volume={volume}  />)}
 
               </div>
 
-              <div className="display row">
-                <div className=" changeSound col-12 row">
-                    <div className=" switch col-12">
-                      <button type="button col-12" className="switcher" onClick={switchAudio}>{audio[0].name}</button>
-                    </div>
+              <div className="display col-12 row">
 
-                    <div className="chord col-12" >
-                      <h4 id="display">{display}</h4>
-                    </div>
-                    <br/>
-                </div>
-                
-
-                <div id="volume" className="volume col-12">
+                <div id="volume" className="volume col-12 ">
                       <input 
                       type="range" 
                       step="0.01" 
                       value={volume} 
                       max='1' min='0'
                       onChange={(e)=> setVolume(e.target.value)} />
-                      <button type="button" className="mute col-3" onClick={mute}>Mute</button>
-                    
+                </div>
 
+                <div className="col-12">
+                        <Button type="button" className="mute btn btn-dark btn-lg" onClick={mute} >{maxMin}</Button>
+                </div>
                     
-                    </div>
                 </div>               
             </div>           
-          </div>           
+          </div>  
+      </div>         
     </>
   );
 }

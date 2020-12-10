@@ -1,137 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=Open+Sans+Condensed:wght@300&family=Playfair+Display:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=Open+Sans+Condensed:wght@300&family=PT+Sans:ital,wght@1,700&family=Playfair+Display:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,700&display=swap');
-
-* {
-  box-sizing: border-box;
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&display=swap');
+#root{
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(30, 221, 145);
 }
-
-[className*="col-"] {
-  float: left;
-  padding: 15px;
-}
-
- // for mobile phones
- [className*="col-"] {
-  width: 100%;
- }
-
-
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-  .col-1 {width: 8.33%;}
-  .col-2 {width: 16.66%;}
-  .col-3 {width: 25%;}
-  .col-4 {width: 33.33%;}
-  .col-5 {width: 41.66%;}
-  .col-6 {width: 50%;}
-  .col-7 {width: 58.33%;}
-  .col-8 {width: 66.66%;}
-  .col-9 {width: 75%;}
-  .col-10 {width: 83.33%;}
-  .col-11 {width: 91.66%;}
-  .col-12 {width: 100%;}
-}
-
-
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
- 
-
-.App{
-  background-color: black;
-  color:white;
+.container-fluid{
   display:flex;
-  text-align: center;
   justify-content: center;
-  flex-direction: column;
-  
-  #header{
-    display:block;
-    padding: 30px;
-    font-family: 'Nerko One', cursive;
-    font-size: 50px;
-  }
-  #drum-machine{
-    display:flex;
-    justify-content: space-around;
-    background: black;
-    margin: 50px 40px 40px 50px;
-    
-    .display{
-      display:flex;
-      flex-direction: column;
-      text-align:center;
-      justify-content: center;
-      margin: auto;
-      font-family: 'Roboto Condensed', sans-serif;
-      width: 50%;
-
-      .changeSound{
-        margin-bottom: 20px;
-        .switch{
-          background-color:purple;
-          display:flex;
-          border-radius: 20px;
-          .switcher
-          { 
-            width: 100%;
-            text-align:center;
-            border-radius: 20px;
-            border : none;
-            background-color:purple;
-            padding: 20px;
-            font-size: 20px;
-            color: white;
-          }
-          
-        }
-        .chord{
-          padding: 20px;
-          background-color: black;
-          color:white;
-          border-radius: 20px;
-        }
-      }
-
-      #volume{
-        display:flex;
-        margin: auto;
-        
-        
-        .mute{
-          border-radius: 20px;
-          border : none;
-          padding: 10px;
-          margin-left: 10px;
-        }
-      }
-    
-    }
-    .pads{
-      display:grid;
-      grid-template-columns: auto auto auto;
-      width: 50%;
-      .drum-pad{
-        font-size: 20px;
-        padding: 5px;
-        border-radius: 10px;
-        background-color:rgb(77, 0, 128);
-        color:white;
-        font-weight: 900;
-      }
-    }
-  }
-  
-
+  height: 100vh;
+  margin-bottom: 1vh;
+  margin-left: 0.5vh;
+ 
 }
-
-
-
-
-
+.mute{
+  margin-left: 1vh;
+  justify-content: center;
+  text-align:center;
+}
+.app {
+  display:flex;
+  justify-content: center;
+  padding-top: 30vh;
+}
+.pads {
+  display:grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  justify-content: center;
+}
+.drum-pad{
+  padding: 30px;
+  margin: 10px;
+}
+.header{
+  display:flex;
+  justify-content: center;
+  text-align:center;
+  padding-top: 5vh;
+  color: white;
+  font-family: 'JetBrains Mono', monospace;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -32,15 +32,15 @@ function Pad({sound, setDisplay, volume}){
     
     return (
       <>  
-          <button  
-            className="drum-pad" 
+          <Button  
+            className="drum-pad btn btn-danger btn-outline-dark btn-lg" 
             type="button"  id={sound.id} 
             name={sound.keyTrigger} 
             onClick={()=>playSound()}>
             {sound.keyTrigger}
             
             <audio  className="clip" id={sound.keyTrigger} src={sound.url} ></audio>
-          </button>
+          </Button>
             
           
           
